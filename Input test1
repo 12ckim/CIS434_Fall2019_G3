@@ -12,14 +12,28 @@
 
 		<h1>Text File Reader</h1>
 		<div>
-			Select a text file: 
+			Copy data into text file and choose that file to be read: 
 			<input type="file" id="fileInput">
 		</div>
 		<pre id="fileDisplayArea"><pre>
 
 	</div>
 	
+	<label for="tentacles">if your sample size is smaller than 50 and you want to manually input your data type in your sample size(n):</label>
+
+	<input type="number" id="tentacles" name="tentacles" min="0" max="50">
+
 	
 
    </body>
 </html>
+
+
+//giving user options for outputs
+<label for="data-output">What do you want to test with your data:</label>
+<input list="test-options" id="data-output" name="data-output" />
+
+<datalist id="test-options">
+    <option value="5 number summary">
+    <option value="mean">
+</datalist>
