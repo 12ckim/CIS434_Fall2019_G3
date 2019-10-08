@@ -1,0 +1,34 @@
+<DOCTYPE html>
+
+   <head>
+   
+   
+   
+   
+   </head>
+   <body>
+      
+	  	  <h1> Enter your input data </h1>
+		  <fieldset>
+		  <legend> DATA INPUT </legend>
+	  <form name= "Statistical calculator” >
+
+	  
+	  
+       <form action= "/action_page.php">
+	   <input type = "number" name= "d1" value=""><br>
+	   <input type = "number" name = "d2" value= ""><br>
+	   <input type = "number" name = "d3" value= ""><br>
+	   <input type= "submit" value= "Submit">
+	   
+	 
+
+	   
+		</form>
+
+
+
+	</fieldset>	
+      </form>
+   </body>
+</html>
