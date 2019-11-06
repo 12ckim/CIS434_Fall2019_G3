@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Stat Calc</title>
+</head>
+<body>
+   How many inputs he want to enter 1-50? <input type="text" id='inputBox'><br>
+   <!-- Submit button on click a function add_input_fields() is called -->
+<input type="submit" value="Submit" onclick="add_input_fields();">
+  
+       <!-- Tag in which input fields will come -->
+<div id="input_fields">
+  
+</div>
+
+
+<script type="text/javascript">
+  
+   var total_input_boxes = 0;
+           function add_input_fields() {
+               // Getting the number user entered in the input box
+               var d = document.getElementById("inputBox").value;
+               total_input_boxes = d;
+
+               // Looping that many times and add input fields
+               for (var i = 1; i <= d; i++) {
+                   var input = document.createElement('input');
+                   //input boxes are given id so that they can be referenced later to fetch the data to do calculations
+               input .setAttribute('id',"input"+i);
+               document.getElementById("input_fields").appendChild(input);
+               // Giving a line break
+                   document.getElementById("input_fields").appendChild(document.createElement('br'));
+               }
+
+               //Adding a submit button which will add all the values
+               //Similarly extra methods can be added
+               var input = document.createElement('input');
+           input .setAttribute('name',"Add");
+           input .setAttribute('type',"submit");
+           input .setAttribute('value',"ADD");
+           input .setAttribute('onclick',"add();");
+           document.getElementById("input_fields").appendChild(input);
+           // Giving a line break
+               document.getElementById("input_fields").appendChild(document.createElement('br'));
+           }
+
+           function add() {
+               var sum = 0;
+
+               //looping through
+               for (var i = 1; i <= total_input_boxes; i++) {
+                   var id = "input"+i;
+                   var input_box = document.getElementById(id).value;
+                   sum = sum + parseInt(input_box);
+
+               }
+
+               alert(sum);
+           }
+
+</script>
+</body>
+</html>
