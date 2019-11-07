@@ -5,7 +5,7 @@
 <title>Stat Calc</title>
 </head>
 <body>
-   How many inputs he want to enter 1-50? <input type="text" id='inputBox'><br>
+   How many data inputs you want to enter 1-50? <input type="text" id='inputBox'><br>
    <!-- Submit button on click a function add_input_fields() is called -->
 <input type="submit" value="Submit" onclick="add_input_fields();">
   
@@ -24,7 +24,7 @@
                total_input_boxes = d;
 
                // Looping that many times and add input fields
-               for (var i = 1; i <= d; i++) {
+               for (var i = 1; i <= d; i++; i<=50) {
                    var input = document.createElement('input');
                    //input boxes are given id so that they can be referenced later to fetch the data to do calculations
                input .setAttribute('id',"input"+i);
