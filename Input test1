@@ -1,40 +1,194 @@
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox
-<DOCTYPE html>
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
-   <head>
-   
-   
-   
-   
-   </head>
-   <body>
-	
-	<label for="size">if your sample size is smaller than 50 and you want to manually input your data type in your sample size(n):</label>
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
-	<input type="number" id="size" name="size" min="0" max="50">
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
 
-	
+public class frame1 {
 
-   </body>
-</html>
+   private JFrame frame;
+   private JTextField textField;
+   private JTextField textField1;
+  
+   //Define a List of JTextField
+   List<JTextField> list=new ArrayList<>();
+  
+   //processed result textfield
+   private JTextField textField_1;
+  
 
+   /**
+   * Launch the application.
+   */
+   public static void main(String[] args) {
+       EventQueue.invokeLater(new Runnable() {
+           public void run() {
+               try {
+                   frame1 window = new frame1();
+                   window.frame.setVisible(true);
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }
+       });
+   }
 
-//giving user options for outputs
-<label for="data-output">What do you want to test with your data:</label>
-<input list="test-options" id="data-output" name="data-output" />
+   /**
+   * Create the application.
+   */
+   public frame1() {
+       initialize();
+   }
 
-<datalist id="test-options">
-    <option value="5 number summary">
-    <option value="minimum">
-    <option value="maximum">
-    <option value="median">
-    <option value="Q1">
-    <option value="Q2">
-    <option value="interquaterile range">
-    <option value="upper fence">
-    <option value="lower fence">
-    <option value="">
-    <option value="mean">
-    <option value="mean">
-    <option value="mean">
-</datalist>
+   /**
+   * Initialize the contents of the frame.
+   */
+   private void initialize() {
+       frame = new JFrame();
+       frame.setBounds(100, 100, 450, 300);
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       frame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+               FormSpecs.RELATED_GAP_COLSPEC,
+               FormSpecs.DEFAULT_COLSPEC,
+               FormSpecs.RELATED_GAP_COLSPEC,
+               FormSpecs.DEFAULT_COLSPEC,
+               FormSpecs.RELATED_GAP_COLSPEC,
+               FormSpecs.DEFAULT_COLSPEC,
+               FormSpecs.RELATED_GAP_COLSPEC,
+               FormSpecs.DEFAULT_COLSPEC,
+               FormSpecs.RELATED_GAP_COLSPEC,
+               FormSpecs.DEFAULT_COLSPEC,
+               FormSpecs.RELATED_GAP_COLSPEC,
+               FormSpecs.DEFAULT_COLSPEC,
+               FormSpecs.RELATED_GAP_COLSPEC,
+               FormSpecs.DEFAULT_COLSPEC,
+               FormSpecs.RELATED_GAP_COLSPEC,
+               ColumnSpec.decode("default:grow"),},
+           new RowSpec[] {
+               FormSpecs.RELATED_GAP_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.RELATED_GAP_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.RELATED_GAP_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,
+               FormSpecs.DEFAULT_ROWSPEC,}));
+      
+       JLabel lblEnterNumber = new JLabel("Enter Number");
+       frame.getContentPane().add(lblEnterNumber, "16, 2");
+      
+       textField = new JTextField();
+       frame.getContentPane().add(textField, "16, 4, left, default");
+       textField.setColumns(10);
+      
+       JButton btnSubmit = new JButton("Submit");
+       btnSubmit.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent arg0) {
+               //Get the text value i.e number of box to be created
+               int num=Integer.parseInt(textField.getText());
+               int x=4;
+               int y=8;
+               for(int i=0;i<num;i++)
+               {
+                   String constraint=""+x+" "+","+y+", left, default";
+                   textField1 = new JTextField();
+                   textField1.setBounds(8, 8, 4, 2);
+                   textField1.setColumns(4);
+                  
+                   //add textfield to list
+                   list.add(textField1);
+                  
+                   frame.getContentPane().add(textField1,constraint);
+                   frame.setVisible(true);
+                   x+=2;
+                   //reaching row and col limit so, rebasing to col=4
+                   //and row+=2
+                   if(x>=14)
+                   {
+                       x=4;
+                       y+=2;
+                   }
+               }
+           }
+       });
+       frame.getContentPane().add(btnSubmit, "16, 6, left, default");
+      
+JButton btnProcess = new JButton("Process");
+btnProcess.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent arg0) {
+ 
+    static double median(double[] x, int start, int endInclusive) {
+        int size = endInclusive - start + 1;
+        if (size <= 0) throw new IllegalArgumentException("Array slice cannot be empty");
+        int m = start + size / 2;
+        return (size % 2 == 1) ? x[m] : (x[m - 1] + x[m]) / 2.0;
+    }
+ 
+    static double[] fivenum(double[] x) {
+        for (Double d : x) {
+            if (d.isNaN())
+                throw new IllegalArgumentException("Unable to deal with arrays containing NaN");
+        }
+        double[] result = new double[5];
+        Arrays.sort(x);
+        result[0] = x[0];
+        result[2] = median(x, 0, x.length - 1);
+        result[4] = x[x.length - 1];
+        int m = x.length / 2;
+        int lowerEnd = (x.length % 2 == 1) ? m : m - 1;
+        result[1] = median(x, 0, lowerEnd);
+        result[3] = median(x, m, x.length - 1);
+        return result;
+    }
+ 
+    public static void main(String[] args) {
+        private ArrayList<String[]> myArray = new ArrayList<String[]>();
+        myArray.add(tf.getText());
+        double xl[][] = {myArray};
+        
+        for (double[] x : xl) System.out.println("[Mininum, First Quartile(Q1), Median(Q2), Thrid Quartile(Q3), Maximum]" + "\n\n"+ Arrays.toString(fivenum(x)) +"\n\n\nFurther calculations:" + "\n\nInterquartile Range(IQR) = Q3 - Q1" + "\n\nRange = Maximum - Minimum" + "\n\nTo get the Extreme Values:\nLower Extreme Value = Q1 - 1.5 * IQR\nUpper Extreme Value = Q3 + 1.5 * IQR");
+    }       
+}
+});
+       frame.getContentPane().add(btnProcess, "16, 8, left, default");
+      
+       JLabel lblProcessedResult = new JLabel("Processed Result");
+       frame.getContentPane().add(lblProcessedResult, "16, 10");
+      
+       textField_1 = new JTextField();
+       frame.getContentPane().add(textField_1, "16, 11, left, default");
+       textField_1.setColumns(10);
+   }
+
+}
