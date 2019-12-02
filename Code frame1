@@ -144,21 +144,46 @@ public class frame1 {
        });
        frame.getContentPane().add(btnSubmit, "16, 6, left, default");
       
-       JButton btnProcess = new JButton("Process");
-       btnProcess.addActionListener(new ActionListener() {
-           public void actionPerformed(ActionEvent arg0) {
-              
-               //Action for process
-               //Processing Sum , one can do other operations
-               int sum=0;
-               for(JTextField tf:list)
-               {
-                   sum=sum+Integer.parseInt(tf.getText());
-               }
-               textField_1.setText(sum+"");
-              
-           }
-       });
+JButton btnProcess = new JButton("Process");
+btnProcess.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent arg0) {
+ 
+   public class Fivenum {
+ 
+    static double median(double[] x, int start, int endInclusive) {
+        int size = endInclusive - start + 1;
+        if (size <= 0) throw new IllegalArgumentException("Array slice cannot be empty");
+        int m = start + size / 2;
+        return (size % 2 == 1) ? x[m] : (x[m - 1] + x[m]) / 2.0;
+    }
+ 
+    static double[] fivenum(double[] x) {
+        for (Double d : x) {
+            if (d.isNaN())
+                throw new IllegalArgumentException("Unable to deal with arrays containing NaN");
+        }
+        double[] result = new double[5];
+        Arrays.sort(x);
+        result[0] = x[0];
+        result[2] = median(x, 0, x.length - 1);
+        result[4] = x[x.length - 1];
+        int m = x.length / 2;
+        int lowerEnd = (x.length % 2 == 1) ? m : m - 1;
+        result[1] = median(x, 0, lowerEnd);
+        result[3] = median(x, m, x.length - 1);
+        return result;
+    }
+ 
+    public static void main(String[] args) {
+        private ArrayList<String[]> myArray = new ArrayList<String[]>();
+        myArray.add(tf.getText());
+        double xl[][] = {myArray};
+        
+        for (double[] x : xl) System.out.printf(""+ Arrays.toString(fivenum(x))+"\n\n[mininum, first quartile, median, thrid quartile, maximum]" + "\n\nInterquartile Range = Thrid Quartile - First Quartile" + "\n\nRange = Maximum - Minimum");
+    }
+    }         
+}
+});
        frame.getContentPane().add(btnProcess, "16, 8, left, default");
       
        JLabel lblProcessedResult = new JLabel("Processed Result");
